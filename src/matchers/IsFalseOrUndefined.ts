@@ -1,4 +1,4 @@
-import {Equals, IsFalse, MongoMatcher, NotExists} from '../index';
+import {IsFalse, MongoMatcher, NotExists} from '../index';
 
 export class MongoIsFalseOrUndefined extends MongoMatcher {
     constructor(private field: string) {
