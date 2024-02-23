@@ -4,7 +4,7 @@
   "description": "Mongo querybuilder for typescript",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "check": "tsc --noEmit",
     "test": "jest",
     "lint": "eslint '**/*.ts' --max-warnings=0",
     "lint:fix": "gts fix",
