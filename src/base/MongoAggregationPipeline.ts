@@ -1,4 +1,4 @@
-import {Match, MongoAggregation, MongoMatcher} from '../index';
+import {IMongoQuery, Match, MongoAggregation, MongoMatcher} from '../index';
 
 export class MongoAggregationPipeline {
     private pipeline: MongoAggregation[];
@@ -12,7 +12,7 @@ export class MongoAggregationPipeline {
         return this;
     }
 
-    toMongo(): object {
+    toMongo(): IMongoQuery[] {
         return this.pipeline.map(aggregation => aggregation.toMongo());
     }
 }

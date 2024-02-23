@@ -2,7 +2,7 @@
 export {MongoMatcher} from './base/MongoMatcher';
 export {MongoAggregation} from './base/MongoAggregation';
 export {MongoAggregationPipeline} from './base/MongoAggregationPipeline';
-export {IMongoValue} from './base/IMongoValue';
+export * from './base/IMongoTypes';
 
 // Matchers
 export * from './matchers/And';

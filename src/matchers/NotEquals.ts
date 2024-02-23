@@ -1,4 +1,4 @@
-import {IMongoValue, MongoMatcher} from '../index';
+import {IMongoQuery, IMongoValue, MongoMatcher} from '../index';
 
 export class MongoNotEquals extends MongoMatcher {
     constructor(
@@ -8,7 +8,7 @@ export class MongoNotEquals extends MongoMatcher {
         super();
     }
 
-    override toMongo(): object {
+    override toMongo(): IMongoQuery {
         return {
             [this.field]: {
                 $ne: this.value,

@@ -1,11 +1,11 @@
-import {MongoMatcher} from '../index';
+import {IMongoQuery, MongoMatcher} from '../index';
 
 export class MongoNotExists extends MongoMatcher {
     constructor(private field: string) {
         super();
     }
 
-    override toMongo(): object {
+    override toMongo(): IMongoQuery {
         return {
             [this.field]: {$exists: false},
         };

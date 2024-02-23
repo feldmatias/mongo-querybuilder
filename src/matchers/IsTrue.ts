@@ -1,11 +1,11 @@
-import {Equals, MongoMatcher} from '../index';
+import {Equals, IMongoQuery, MongoMatcher} from '../index';
 
 export class MongoIsTrue extends MongoMatcher {
     constructor(private field: string) {
         super();
     }
 
-    override toMongo(): object {
+    override toMongo(): IMongoQuery {
         return Equals(this.field, true).toMongo();
     }
 }

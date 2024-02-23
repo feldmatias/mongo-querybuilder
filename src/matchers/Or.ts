@@ -1,4 +1,4 @@
-import {MongoMatcher} from '../index';
+import {IMongoQuery, MongoMatcher} from '../index';
 
 export class MongoOr extends MongoMatcher {
     private matchers: MongoMatcher[];
@@ -12,7 +12,7 @@ export class MongoOr extends MongoMatcher {
         return new MongoOr(...this.matchers, ...matchers);
     }
 
-    toMongo(): object {
+    toMongo(): IMongoQuery {
         return {
             $or: this.matchers.map(matcher => matcher.toMongo()),
         };

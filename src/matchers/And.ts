@@ -1,4 +1,4 @@
-import {MongoMatcher} from '../index';
+import {IMongoQuery, MongoMatcher} from '../index';
 
 export class MongoAnd extends MongoMatcher {
     private matchers: MongoMatcher[];
@@ -12,7 +12,7 @@ export class MongoAnd extends MongoMatcher {
         return new MongoAnd(...this.matchers, ...matchers);
     }
 
-    toMongo(): object {
+    toMongo(): IMongoQuery {
         return {
             $and: this.matchers.map(matcher => matcher.toMongo()),
         };

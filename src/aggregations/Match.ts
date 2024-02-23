@@ -1,11 +1,11 @@
-import {MongoAggregation, MongoMatcher} from '../index';
+import {IMongoQuery, MongoAggregation, MongoMatcher} from '../index';
 
 export class MongoMatch extends MongoAggregation {
     constructor(private matcher: MongoMatcher) {
         super();
     }
 
-    toMongo(): object {
+    toMongo(): IMongoQuery {
         return {
             $match: this.matcher.toMongo(),
         };

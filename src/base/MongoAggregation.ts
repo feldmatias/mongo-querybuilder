@@ -1,3 +1,5 @@
+import {IMongoQuery} from './IMongoTypes';
+
 export abstract class MongoAggregation {
-    abstract toMongo(): object;
+    abstract toMongo(): IMongoQuery;
 }

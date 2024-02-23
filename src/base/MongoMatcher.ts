@@ -1,7 +1,7 @@
-import {MongoAnd, MongoOr} from '../index';
+import {IMongoQuery, MongoAnd, MongoOr} from '../index';
 
 export abstract class MongoMatcher {
-    abstract toMongo(): object;
+    abstract toMongo(): IMongoQuery;
 
     and(...matchers: MongoMatcher[]): MongoAnd {
         return new MongoAnd(this, ...matchers);
