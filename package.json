@@ -1,18 +1,14 @@
 {
   "name": "mongo-querybuilder",
-  "version": "1.0.0",
-  "description": "Mongo querybuilder for typescript",
-  "main": "index.js",
+  "module": "index.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bun run index.ts"
   },
-  "keywords": [
-    "mongo",
-    "mongodb",
-    "query",
-    "querybuilder",
-    "mongoose"
-  ],
-  "author": "",
-  "license": "MIT"
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }
