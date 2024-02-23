@@ -1,5 +1,5 @@
 {
-  "name": "mongo-querybuilder",
+  "name": "mongo-simple-querybuilder",
   "version": "1.0.0",
   "description": "Mongo querybuilder for typescript",
   "main": "dist/index.js",
