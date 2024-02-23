@@ -3,4 +3,5 @@ Mongo querybuilder for typescript, focused on extensibility, readability, simpli
 
 https://bun.sh/docs/quickstart
 bun run start
+bun test
 
