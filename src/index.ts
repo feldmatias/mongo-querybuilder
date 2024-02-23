@@ -11,3 +11,4 @@ export * from './matchers/Exists';
 export * from './matchers/NotExists';
 export * from './matchers/IsTrue';
 export * from './matchers/IsFalse';
+export * from './matchers/IsFalseOrUndefined';
