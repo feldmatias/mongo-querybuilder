@@ -2,13 +2,15 @@
   "name": "mongo-querybuilder",
   "version": "1.0.0",
   "description": "Mongo querybuilder for typescript",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "check": "tsc --noEmit",
     "test": "jest",
     "lint": "eslint '**/*.ts' --max-warnings=0",
     "lint:fix": "gts fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "tsc"
   },
   "keywords": [
     "mongo",
