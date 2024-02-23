@@ -20,6 +20,10 @@
     "mongoose"
   ],
   "author": "Matias Feld",
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/feldmatias/mongo-querybuilder.git" 
+  },
   "license": "MIT",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
