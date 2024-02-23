@@ -7,3 +7,5 @@ export * from './matchers/And';
 export * from './matchers/Or';
 export * from './matchers/Equals';
 export * from './matchers/NotEquals';
+export * from './matchers/Exists';
+export * from './matchers/NotExists';
