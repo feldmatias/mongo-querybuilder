@@ -1,5 +1,7 @@
 // Base
 export {MongoMatcher} from './base/MongoMatcher';
+export {MongoAggregation} from './base/MongoAggregation';
+export {MongoAggregationPipeline} from './base/MongoAggregationPipeline';
 export {IMongoValue} from './base/IMongoValue';
 
 // Matchers
@@ -12,3 +14,6 @@ export * from './matchers/NotExists';
 export * from './matchers/IsTrue';
 export * from './matchers/IsFalse';
 export * from './matchers/IsFalseOrUndefined';
+
+// Aggregations
+export * from './aggregations/Match';
