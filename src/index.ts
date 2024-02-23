@@ -6,3 +6,4 @@ export {IMongoValue} from './base/IMongoValue';
 export * from './matchers/And';
 export * from './matchers/Or';
 export * from './matchers/Equals';
+export * from './matchers/NotEquals';
