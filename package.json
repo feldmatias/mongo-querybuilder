@@ -20,9 +20,9 @@
     "mongoose"
   ],
   "author": "Matias Feld",
-  "repository": { 
-    "type": "git", 
-    "url": "https://github.com/feldmatias/mongo-querybuilder.git" 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feldmatias/mongo-querybuilder.git"
   },
   "license": "MIT",
   "devDependencies": {
