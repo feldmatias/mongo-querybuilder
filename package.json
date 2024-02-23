@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "lint": "gts lint",
+    "lint": "eslint '**/*.ts' --max-warnings=0",
     "lint:fix": "gts fix"
   },
   "keywords": [

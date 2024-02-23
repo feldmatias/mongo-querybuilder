@@ -1,4 +1,4 @@
-import {IsFalseOrUndefined} from '../../src';
+import {IsFalseOrUndefined, Equals} from '../../src';
 
 describe('IsFalse', () => {
     test('field is false or undefined', () => {
