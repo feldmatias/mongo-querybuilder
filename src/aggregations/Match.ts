@@ -5,6 +5,10 @@ export class MongoMatch extends MongoAggregation {
         super();
     }
 
+    andMatch(matcher: MongoMatcher): MongoMatch {
+        return new MongoMatch(this.matcher.and(matcher));
+    }
+
     toMongo(): IMongoQuery {
         return {
             $match: this.matcher.toMongo(),

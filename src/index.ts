@@ -17,3 +17,4 @@ export * from './matchers/IsFalseOrUndefined';
 
 // Aggregations
 export * from './aggregations/Match';
+export * from './aggregations/Sort';
