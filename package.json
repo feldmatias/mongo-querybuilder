@@ -4,7 +4,10 @@
   "description": "Mongo querybuilder for typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "lint:fix": "gts fix"
   },
   "keywords": [
     "mongo",
@@ -13,6 +16,11 @@
     "querybuilder",
     "mongoose"
   ],
-  "author": "",
-  "license": "MIT"
+  "author": "Matias Feld",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "gts": "^5.2.0",
+    "@types/node": "20.8.2"
+  }
 }
