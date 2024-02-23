@@ -1,4 +1,4 @@
-import {IMongoValue, MongoMatcher} from '../index';
+import {MongoMatcher} from '../index';
 
 export class MongoExists extends MongoMatcher {
     constructor(private field: string) {

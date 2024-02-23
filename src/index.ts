@@ -9,3 +9,5 @@ export * from './matchers/Equals';
 export * from './matchers/NotEquals';
 export * from './matchers/Exists';
 export * from './matchers/NotExists';
+export * from './matchers/IsTrue';
+export * from './matchers/IsFalse';
