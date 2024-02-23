@@ -8,3 +8,4 @@ local.ts
 *.tgz
 .github/
 .husky/
+tsconfig.json
