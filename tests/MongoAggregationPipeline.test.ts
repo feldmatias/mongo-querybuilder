@@ -3,6 +3,7 @@ import {
     Equals,
     Exists,
     GroupBy,
+    LimitOffsetPagination,
     MongoAggregationPipeline,
     SortDirection,
     StringConcat,
@@ -187,13 +188,24 @@ describe('Aggregation Pipeline', () => {
         });
     });
 
+    test('pagination', () => {
+        const pipeline = new MongoAggregationPipeline().paginate(
+            LimitOffsetPagination({pageSize: 10, page: 3})
+        );
+
+        const expected = [{$skip: 30}, {$limit: 10}];
+
+        expect(pipeline.toMongo()).toEqual(expected);
+    });
+
     test('multiple aggregations together', () => {
         const pipeline = new MongoAggregationPipeline()
             .match(Exists('test_field1'))
             .sort('test_field2', SortDirection.ASC)
             .match(Equals('test_field3', 5))
             .group(GroupBy('test_field4').aggregate('count', Count()))
-            .project('test_field5');
+            .project('test_field5')
+            .paginate(LimitOffsetPagination({pageSize: 10, page: 2}));
 
         const expected = [
             {$match: {test_field1: {$exists: true}}},
@@ -206,6 +218,8 @@ describe('Aggregation Pipeline', () => {
                 },
             },
             {$project: {test_field5: 1}},
+            {$skip: 20},
+            {$limit: 10},
         ];
 
         expect(pipeline.toMongo()).toEqual(expected);

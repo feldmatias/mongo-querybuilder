@@ -6,6 +6,7 @@ import {
     MongoGroupBy,
     MongoMatch,
     MongoMatcher,
+    MongoPagination,
     MongoProject,
     MongoSort,
     Project,
@@ -57,6 +58,11 @@ export class MongoAggregationPipeline {
         } else {
             this.pipeline.push(Project(field, projection));
         }
+        return this;
+    }
+
+    paginate(pagination: MongoPagination): this {
+        this.pipeline.push(...pagination.toAggregation());
         return this;
     }
 

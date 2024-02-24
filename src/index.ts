@@ -3,6 +3,7 @@ export * from './base/MongoMatcher';
 export * from './base/MongoAggregation';
 export * from './base/MongoAggregationPipeline';
 export * from './base/MongoFieldProjection';
+export * from './base/MongoPagination';
 export * from './base/IMongoTypes';
 
 // Matchers
@@ -20,6 +21,8 @@ export * from './matchers/IsFalseOrUndefined';
 export * from './aggregations/Match';
 export * from './aggregations/Sort';
 export * from './aggregations/Project';
+export * from './aggregations/Limit';
+export * from './aggregations/Skip';
 export * from './aggregations/GroupBy';
 export * from './aggregations/group-operations/GroupCount';
 export * from './aggregations/group-operations/GroupSum';
@@ -27,3 +30,6 @@ export * from './aggregations/group-operations/GroupAvg';
 
 // Computed Fields
 export * from './computed-fields/StringConcat';
+
+// Pagination
+export * from './pagination/LimitOffsetPagination';
