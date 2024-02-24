@@ -5,6 +5,7 @@ import {
     GroupBy,
     MongoAggregationPipeline,
     SortDirection,
+    StringConcat,
 } from '../src';
 
 describe('Aggregation Pipeline', () => {
@@ -140,12 +141,59 @@ describe('Aggregation Pipeline', () => {
         });
     });
 
+    describe('project', () => {
+        test('project aggregation', () => {
+            const pipeline = new MongoAggregationPipeline().project(
+                'test_field'
+            );
+
+            const expected = [{$project: {test_field: 1}}];
+
+            expect(pipeline.toMongo()).toEqual(expected);
+        });
+
+        test('two project aggregations', () => {
+            const pipeline = new MongoAggregationPipeline()
+                .project('test_field1')
+                .project('test_field2');
+
+            const expected = [{$project: {test_field1: 1, test_field2: 1}}];
+
+            expect(pipeline.toMongo()).toEqual(expected);
+        });
+
+        test('multiple project aggregations', () => {
+            const pipeline = new MongoAggregationPipeline()
+                .project('test_field1')
+                .project(
+                    'test_field2',
+                    StringConcat()
+                        .concatField('test_field3')
+                        .concatString('test')
+                )
+                .project('test_field3');
+
+            const expected = [
+                {
+                    $project: {
+                        test_field1: 1,
+                        test_field2: {$concat: ['$test_field3', 'test']},
+                        test_field3: 1,
+                    },
+                },
+            ];
+
+            expect(pipeline.toMongo()).toEqual(expected);
+        });
+    });
+
     test('multiple aggregations together', () => {
         const pipeline = new MongoAggregationPipeline()
             .match(Exists('test_field1'))
             .sort('test_field2', SortDirection.ASC)
             .match(Equals('test_field3', 5))
-            .group(GroupBy('test_field4').aggregate('count', Count()));
+            .group(GroupBy('test_field4').aggregate('count', Count()))
+            .project('test_field5');
 
         const expected = [
             {$match: {test_field1: {$exists: true}}},
@@ -157,6 +205,7 @@ describe('Aggregation Pipeline', () => {
                     count: {$sum: 1},
                 },
             },
+            {$project: {test_field5: 1}},
         ];
 
         expect(pipeline.toMongo()).toEqual(expected);

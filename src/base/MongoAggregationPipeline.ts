@@ -2,10 +2,13 @@ import {
     IMongoQuery,
     Match,
     MongoAggregation,
+    MongoFieldProjection,
     MongoGroupBy,
     MongoMatch,
     MongoMatcher,
+    MongoProject,
     MongoSort,
+    Project,
     Sort,
     SortDirection,
 } from '../index';
@@ -43,6 +46,17 @@ export class MongoAggregationPipeline {
 
     group(operation: MongoGroupBy): this {
         this.pipeline.push(operation);
+        return this;
+    }
+
+    project(field: string, projection?: MongoFieldProjection): this {
+        const lastAggregation = this.getLastAggregation();
+        if (lastAggregation instanceof MongoProject) {
+            this.pipeline[this.pipeline.length - 1] =
+                lastAggregation.andProject(field, projection);
+        } else {
+            this.pipeline.push(Project(field, projection));
+        }
         return this;
     }
 
