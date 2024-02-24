@@ -2,6 +2,7 @@ import {
     IMongoQuery,
     Match,
     MongoAggregation,
+    MongoGroupBy,
     MongoMatch,
     MongoMatcher,
     MongoSort,
@@ -37,6 +38,11 @@ export class MongoAggregationPipeline {
         } else {
             this.pipeline.push(Sort(field, direction));
         }
+        return this;
+    }
+
+    group(operation: MongoGroupBy): this {
+        this.pipeline.push(operation);
         return this;
     }
 

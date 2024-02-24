@@ -18,3 +18,7 @@ export * from './matchers/IsFalseOrUndefined';
 // Aggregations
 export * from './aggregations/Match';
 export * from './aggregations/Sort';
+export * from './aggregations/GroupBy';
+export * from './aggregations/group-operations/GroupCount';
+export * from './aggregations/group-operations/GroupSum';
+export * from './aggregations/group-operations/GroupAvg';

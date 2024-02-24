@@ -1,4 +1,11 @@
-import {Equals, Exists, MongoAggregationPipeline, SortDirection} from '../src';
+import {
+    Count,
+    Equals,
+    Exists,
+    GroupBy,
+    MongoAggregationPipeline,
+    SortDirection,
+} from '../src';
 
 describe('Aggregation Pipeline', () => {
     describe('match', () => {
@@ -94,16 +101,62 @@ describe('Aggregation Pipeline', () => {
         });
     });
 
+    describe('group', () => {
+        test('group aggregation', () => {
+            const pipeline = new MongoAggregationPipeline().group(
+                GroupBy('test_field')
+            );
+
+            const expected = [
+                {
+                    $group: {
+                        _id: '$test_field',
+                    },
+                },
+            ];
+
+            expect(pipeline.toMongo()).toEqual(expected);
+        });
+
+        test('multiple group aggregations', () => {
+            const pipeline = new MongoAggregationPipeline()
+                .group(GroupBy('test_field1'))
+                .group(GroupBy('test_field2'));
+
+            const expected = [
+                {
+                    $group: {
+                        _id: '$test_field1',
+                    },
+                },
+                {
+                    $group: {
+                        _id: '$test_field2',
+                    },
+                },
+            ];
+
+            expect(pipeline.toMongo()).toEqual(expected);
+        });
+    });
+
     test('multiple aggregations together', () => {
         const pipeline = new MongoAggregationPipeline()
             .match(Exists('test_field1'))
             .sort('test_field2', SortDirection.ASC)
-            .match(Equals('test_field3', 5));
+            .match(Equals('test_field3', 5))
+            .group(GroupBy('test_field4').aggregate('count', Count()));
 
         const expected = [
             {$match: {test_field1: {$exists: true}}},
             {$sort: {test_field2: 1}},
             {$match: {test_field3: 5}},
+            {
+                $group: {
+                    _id: '$test_field4',
+                    count: {$sum: 1},
+                },
+            },
         ];
 
         expect(pipeline.toMongo()).toEqual(expected);
